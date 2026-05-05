@@ -28,7 +28,7 @@ export function Selection() {
   };
 
   const handleSeeAllCards = () => {
-    navigate("/deck");
+    navigate("/baralho");
   };
 
   const handleReset = () => {
@@ -39,10 +39,16 @@ export function Selection() {
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-amber-400 via-red-500 to-sky-700">
-      <div className="flex-1 p-8">
+      <motion.div
+        key="selection"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, ease: "easeInOut" }}
+        className="flex-1 p-8"
+      >
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-gray-100 text-center text-shadow-lg antialiased mb-2">
-            Hora de vislumbrar o futuro
+            Descubra como antecipar impactos
           </h1>
           <p className="text-2xl text-center text-gray-100 text-shadow-lg font-medium antialiased mb-6">
             {selectedCards.length < 3
@@ -65,27 +71,26 @@ export function Selection() {
 
         {selectedCards.length === 3 && (
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, ease: "easeInOut" }}
             className="max-w-4xl mx-auto my-auto w-full"
           >
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 mb-8">
-              <h2 className="mb-6 text-2xl font-bold text-gray-100 text-shadow-lg antialiased">
-                Significados das cartas
+            <div className="bg-black/20 backdrop-blur-md rounded-2xl p-8 mb-8">
+              <h2 className="mb-16 text-2xl font-bold text-gray-100 text-shadow-lg text-center antialiased">
+                Agora vamos pausar e refletir sobre o que estamos fazendo
               </h2>
-              <div className="space-y-4">
+
+              <div className="space-y-6">
                 {selectedCards.map((card, index) => (
                   <div
                     key={card.id}
-                    className="border-b border-gray-300/30 pb-4 last:border-0"
+                    className="border-b border-gray-300/30 pb-6 last:border-0"
                   >
-                    <div className="flex items-center gap-3 mb-2">
-                      <h3 className="text-xl font-semibold text-gray-100 text-shadow-md antialiased">
-                        {index + 1}. {card.name}
-                      </h3>
-                    </div>
-                    <p className="text-gray-200 text-shadow-xs antialiased whitespace-pre-line ml-12">
+                    <h3 className="text-xl font-semibold text-gray-100 text-shadow-md antialiased mb-4">
+                      {index + 1}. {card.name}
+                    </h3>
+                    <p className="text-gray-200 text-shadow-xs italic subpixel-antialiased whitespace-pre-line">
                       {card.meaning}
                     </p>
                   </div>
@@ -93,23 +98,26 @@ export function Selection() {
               </div>
             </div>
 
-            <div className="flex gap-6 justify-center">
+            <div className="flex flex-col md:flex-row gap-6 justify-center mt-16">
               <button
                 onClick={handleReset}
-                className="bg-amber-500 hover:bg-amber-600 text-gray-100 antialiased px-8 py-4 rounded-2xl text-lg font-bold text-shadow-md transition-colors shadow-xl"
+                className="flex gap-3 justify-center bg-black/40 hover:bg-black/60 backdrop-blur-md text-gray-100 antialiased px-4 py-2 rounded-2xl text-lg text-shadow-md transition-colors shadow-xl cursor-pointer"
               >
-                Reiniciar leitura
+                <p>&#x21BB;</p>
+                <p>Refazer a tiragem</p>
               </button>
               <button
                 onClick={handleSeeAllCards}
-                className="bg-sky-500 hover:bg-sky-600 text-gray-100 antialiased px-8 py-4 rounded-2xl text-lg font-bold text-shadow-md transition-colors shadow-xl"
+                className="flex gap-3 justify-center bg-black/40 hover:bg-black/60 backdrop-blur-md text-gray-100 antialiased px-4 py-2 rounded-2xl text-lg text-shadow-md transition-colors shadow-xl cursor-pointer"
               >
-                Ver todas as cartas
+                <p>Ver o baralho completo</p>
+                <p>&#x203A;</p>
               </button>
             </div>
           </motion.div>
         )}
-      </div>
+      </motion.div>
+
       <Footer />
     </div>
   );

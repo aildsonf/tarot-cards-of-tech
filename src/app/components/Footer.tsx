@@ -2,7 +2,7 @@ import React from "react";
 
 export function Footer() {
   return (
-    <footer className="py-4 text-center text-sm text-gray-100 text-shadow-md antialiased">
+    <footer className="p-8 text-center text-sm text-gray-100 text-shadow-md subpixel-antialiased">
       <a
         href="https://www.artefactgroup.com/resources/the-tarot-cards-of-tech/"
         rel="noopener noreferrer"
