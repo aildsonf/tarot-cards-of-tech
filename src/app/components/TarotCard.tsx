@@ -1,16 +1,20 @@
+import React from "react";
 import { motion } from "motion/react";
 import type { TarotCard as TarotCardType } from "../data/cards";
 
 interface TarotCardProps {
   card?: TarotCardType;
   isFlipped?: boolean;
-  onClick?: () => void;
   showBack?: boolean;
+  onClick?: () => void;
 }
 
-export function TarotCard({ card, isFlipped = false, onClick, showBack = false }: TarotCardProps) {
-  const displayBack = showBack && !isFlipped;
-
+export function TarotCard({
+  card,
+  isFlipped = false,
+  showBack = false,
+  onClick,
+}: TarotCardProps) {
   return (
     <motion.div
       className="relative w-48 h-72 cursor-pointer perspective-1000"
@@ -26,21 +30,23 @@ export function TarotCard({ card, isFlipped = false, onClick, showBack = false }
       >
         {/* Front (face up) */}
         <div
-          className="absolute w-full h-full backface-hidden rounded-2xl border-4 border-purple-900 bg-gradient-to-br from-purple-100 to-pink-100 shadow-xl flex flex-col items-center justify-between p-6"
+          className="absolute w-full h-full backface-hidden rounded-2xl shadow-xl overflow-hidden"
           style={{ transform: "rotateY(180deg)" }}
         >
-          {card && (
-            <>
-              <div className="text-2xl font-bold text-purple-900">{card.id}</div>
-              <div className="text-6xl">{card.icon}</div>
-              <div className="text-center text-lg font-semibold text-purple-900">{card.name}</div>
-            </>
-          )}
+          <img
+            src={card?.image}
+            alt={card?.name}
+            className="object-fit w-full h-full"
+          />
         </div>
 
         {/* Back */}
-        <div className="absolute w-full h-full backface-hidden rounded-2xl border-4 border-purple-900 bg-gradient-to-br from-indigo-600 to-purple-800 shadow-xl flex items-center justify-center">
-          <div className="text-6xl text-purple-200">🔮</div>
+        <div className="absolute w-full h-full backface-hidden rounded-2xl shadow-xl overflow-hidden">
+          <img
+            src="/assets/toolkit-logo.png"
+            alt="Tarot Cards of Tech logo"
+            className="object-fit w-full h-full"
+          />
         </div>
       </motion.div>
     </motion.div>

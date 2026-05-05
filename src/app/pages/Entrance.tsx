@@ -1,17 +1,19 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useNavigate } from "react-router-dom";
 import { Footer } from "../components/Footer";
 
 export function Entrance() {
-  const [stage, setStage] = useState<"title" | "start" | "description">("title");
+  const [stage, setStage] = useState<"title" | "start" | "description">(
+    "title",
+  );
   const navigate = useNavigate();
 
   useEffect(() => {
     // Show title for 5 seconds then show start card
     const timer1 = setTimeout(() => {
       setStage("start");
-    }, 2000);
+    }, 3000);
 
     return () => {
       clearTimeout(timer1);
@@ -33,7 +35,7 @@ export function Entrance() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-800 flex flex-col">
+    <div className="flex flex-col min-h-screen bg-gradient-to-br from-amber-400 via-red-500 to-sky-700">
       <div className="flex-1 flex items-center justify-center p-4">
         <AnimatePresence mode="wait">
           {stage === "title" && (
@@ -43,7 +45,7 @@ export function Entrance() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 1, ease: "easeInOut" }}
-              className="text-6xl font-bold text-white"
+              className="text-6xl font-bold text-gray-100 text-center text-shadow-lg antialiased"
             >
               Tarot Cards of Tech
             </motion.h1>
@@ -56,9 +58,16 @@ export function Entrance() {
               animate={{ opacity: 1 }}
               transition={{ duration: 1, ease: "easeOut" }}
               onClick={handleStart}
-              className="w-64 h-96 rounded-2xl border-4 border-purple-900 bg-gradient-to-br from-purple-100 to-pink-100 shadow-2xl flex items-center justify-center cursor-pointer hover:scale-105 transition-transform"
+              className="relative w-64 h-96 backface-hidden rounded-2xl shadow-xl overflow-hidden cursor-pointer hover:scale-105 transition-transform"
             >
-              <div className="text-4xl font-bold text-purple-900">Iniciar</div>
+              <img
+                src="/assets/toolkit-logo.png"
+                alt="Tarot Cards of Tech logo"
+                className="object-fit w-full h-full"
+              />
+              <p className="absolute bottom-0 left-0 right-0 pb-6 pt-50 bg-gradient-to-t from-sky-500 to-transparent text-center font-bold text-2xl text-gray-100 text-shadow-lg antialiased">
+                INICIAR
+              </p>
             </motion.div>
           )}
 
@@ -68,19 +77,26 @@ export function Entrance() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-white text-center px-8 max-w-3xl"
+              className="text-gray-100 text-shadow-lg antialiased text-center px-8 max-w-3xl"
             >
-              <h2 className="text-3xl font-bold mb-6">Tarot Cards of Tech</h2>
-              <p className="text-lg leading-relaxed mb-4">
-                Criado pelo Artefact Group, essa ferramenta é uma espécie de tarô que possui perguntas provocativas para ajudar designers e equipes a pensarem além da funcionalidade da tecnologia e assim criarem futuros melhores, colocando a humanidade como o centro desse processo.
+              <p className="text-xl leading-relaxed mb-4">
+                A Artefact criou as Cartas de Tarô da Tecnologia para ajudar
+                criadores de todos os tipos a considerarem o impacto da
+                tecnologia.
               </p>
-              <p className="text-lg leading-relaxed">
-                A ideia principal é vislumbrar o futuro e assim antecipar impactos, principalmente os não intencionais, como riscos sociais, éticos e comportamentais.
+              <p className="text-xl leading-relaxed">
+                Cada carta contém provocações que não só ajudarão você a prever
+                consequências não intencionais, mas também revelar oportunidades
+                para criar mudanças positivas. Leve as Cartas de Tarô da
+                Tecnologia para sua próxima sessão de brainstorming ou reunião
+                de equipe para vislumbrar o futuro e entender melhor o potencial
+                impacto de seus produtos.
               </p>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
+
       <Footer />
     </div>
   );
