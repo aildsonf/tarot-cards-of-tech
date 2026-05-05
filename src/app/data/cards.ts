@@ -2,20 +2,20 @@ export interface TarotCard {
   id: number;
   name: string;
   meaning: string;
-  icon: string;
+  image: string;
 }
 
 export const tarotCards: TarotCard[] = [
-  { id: 1, name: "O Traidor", meaning: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", icon: "🌟" },
-  { id: 2, name: "O Catalisador", meaning: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", icon: "✨" },
-  { id: 3, name: "O Amigo Fiel", meaning: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", icon: "🌙" },
-  { id: 4, name: "Os Esquecidos", meaning: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", icon: "🌸" },
-  { id: 5, name: "O Lobo Mau", meaning: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", icon: "👑" },
-  { id: 6, name: "A Sireia", meaning: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", icon: "⚜️" },
-  { id: 7, name: "O Fanático", meaning: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", icon: "💖" },
-  { id: 8, name: "Os BFFs", meaning: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", icon: "⚡" },
-  { id: 9, name: "O Escândalo", meaning: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", icon: "🦁" },
-  { id: 10, name: "O Hitmaker", meaning: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", icon: "🔮" },
-  { id: 11, name: "O Popstar", meaning: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", icon: "🎡" },
-  { id: 12, name: "A Mãe Natureza", meaning: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", icon: "⚖️" },
+  { id: 1, name: "O Traidor", meaning: "O que poderia fazer com que as pessoas perdessem a confiança no seu produto?\nO que poderia fazer com que as pessoas se sentissem inseguras ou expostas?\nQuais mecanismos estão em vigor para ouvir seus usuários?\nComo você reconhecerá padrões mais amplos no feedback para que ações possam ser tomadas?", image: "/assets/traidor.png" },
+  { id: 2, name: "O Catalisador", meaning: "Como os hábitos culturais podem mudar a forma como seu produto é usado?\nE como seu produto pode mudar os hábitos culturais?\nEm que contexto um alienígena do espaço sideral precisaria para usar ou entender seu produto?\nQuais normas sociais, etiqueta ou tradições poderiam mudar por causa do seu produto?", image: "/assets/catalisador.png" },
+  { id: 3, name: "O Amigo Fiel", meaning: "Se o seu produto fosse totalmente dedicado a empoderar a vida de uma população carente, que tipo de impacto você poderia gerar?\nQuem seu produto poderia beneficiar mais diretamente além dos seus usuários-alvo?\nComo seu produto mudaria para melhor atendê-los?", image: "/assets/amigo-fiel.png" },
+  { id: 4, name: "Os Esquecidos", meaning: "Ao imaginar sua base de usuários, quem está excluído? Se eles usassem seu produto, como seria a experiência deles?\nQual perspectiva está faltando no desenvolvimento do produto?\nImagine que o oposto das suas suposições sobre seu usuário principal seja verdade, como isso mudaria?", image: "/assets/esquecidos.png" },
+  { id: 5, name: "O Lobo Mau", meaning: "Que tipo de 'agente malicioso' poderia ser usado com seu produto?\nComo seria um comportamento predatório e explorador com seu produto?\nQuais recursos do produto são mais vulneráveis à manipulação?\nQuem poderia ser alvo de manipulação com seu produto?", image: "/assets/lobo-mau.png" },
+  { id: 6, name: "A Sireia", meaning: "Como seria o uso 'excessivo' do seu produto?\nComo seu produto incentiva o engajamento dos usuários e como ele facilita o desligamento?\nComo seu produto respeita os limites das pessoas e outros aspectos de suas vidas?\nEm que situações o uso do seu produto pode ser inadequado ou causar distração?", image: "/assets/sireia.png" },
+  { id: 7, name: "O Fanático", meaning: "Como se comportaria uma comunidade de seus usuários mais apaixonados?\nQuais são as 'regras de engajamento' em que seu produto se baseia e como elas poderiam ser subvertidas?\nDe que maneiras a comunidade poderia ser um trunfo? De que maneiras ela poderia se tornar um problema?\nSe o seu produto envolve diálogo, como se manifestam a comunicação positiva e a negativa?", image: "/assets/fanatico.png" },
+  { id: 8, name: "Os BFFs", meaning: "Se dois amigos usam seu produto, como ele pode melhorar ou prejudicar o relacionamento deles?\nComo seu produto muda ou cria novas maneiras de as pessoas interagirem?\nSeu produto preenche ou altera um papel anteriormente desempenhado por uma pessoa?", image: "/assets/bffs.png" },
+  { id: 9, name: "O Escândalo", meaning: "Qual a pior manchete sobre o seu produto que você consegue imaginar?\nO que no seu modelo de negócios preocuparia mais os usuários?\nEm que cenários o seu produto poderia causar danos ou colocar pessoas em perigo?\nSe o seu produto fosse usado de forma totalmente contrária à forma como foi concebido, como isso se manifestaria?", image: "/assets/escandalo.png" },
+  { id: 10, name: "O Hitmaker", meaning: "O que acontece quando 100 milhões de pessoas usam seu produto?\nO que o uso em larga escala do seu produto revelaria ou causaria?\nComo uma comunidade poderia mudar se 80% dos moradores usassem seu produto?\nComo os hábitos e normas poderiam mudar?", image: "/assets/hitmaker.png" },
+  { id: 11, name: "O Popstar", meaning: "Quem ou o quê desaparece se o seu produto for bem-sucedido?\nQuem perde o emprego?\nQue outros produtos ou serviços serão substituídos?\nQue setores, instituições ou políticas seriam afetados?", image: "/assets/popstar.png" },
+  { id: 12, name: "A Mãe Natureza", meaning: "Se o ambiente fosse seu cliente, como seu produto mudaria?\nQue feedback o ambiente daria sobre seu produto?\nQual é o comportamento mais insustentável que seu produto incentiva?", image: "/assets/mae-natureza.png" },
 ];

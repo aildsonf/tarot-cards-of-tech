@@ -1,3 +1,4 @@
+import React from "react";
 import { motion } from "motion/react";
 import { useNavigate } from "react-router-dom";
 import { TarotCard } from "../components/TarotCard";
@@ -8,17 +9,8 @@ export function AllCards() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-800 flex flex-col">
+    <div className="flex flex-col min-h-screen bg-gradient-to-br from-amber-400 via-red-500 to-sky-700">
       <div className="flex-1 p-8">
-        <div className="max-w-7xl mx-auto mb-8">
-          <button
-            onClick={() => navigate("/leitura")}
-            className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full font-semibold transition-colors shadow-lg"
-          >
-            ← Voltar para a seleção
-          </button>
-        </div>
-
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -27,7 +19,7 @@ export function AllCards() {
           Todas as Cartas
         </motion.h1>
 
-        <div className="flex flex-wrap justify-center gap-8 max-w-7xl mx-auto">
+        <div className="flex flex-wrap justify-center gap-8 mx-auto w-full">
           {tarotCards.map((card, index) => (
             <motion.div
               key={card.id}
@@ -40,6 +32,16 @@ export function AllCards() {
           ))}
         </div>
       </div>
+
+      <div className="max-w-7xl mx-auto mb-10">
+        <button
+          onClick={() => navigate("/leitura")}
+          className="bg-sky-500 hover:bg-sky-600 text-gray-100 antialiased px-8 py-4 rounded-2xl text-lg font-bold text-shadow-md transition-colors shadow-xl"
+        >
+          ← Voltar para a seleção
+        </button>
+      </div>
+
       <Footer />
     </div>
   );

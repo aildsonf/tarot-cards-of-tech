@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
 import { TarotCard } from "../components/TarotCard";
@@ -19,6 +19,11 @@ export function Selection() {
   const handleCardClick = (card: TarotCardType) => {
     if (selectedCards.length < 3 && !selectedCards.includes(card)) {
       setSelectedCards([...selectedCards, card]);
+      return;
+    }
+    if (selectedCards.includes(card)) {
+      setSelectedCards(selectedCards.filter((c) => c.id !== card.id));
+      return;
     }
   };
 
@@ -33,28 +38,20 @@ export function Selection() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-800 flex flex-col">
+    <div className="flex flex-col min-h-screen bg-gradient-to-br from-amber-400 via-red-500 to-sky-700">
       <div className="flex-1 p-8">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-center text-white mb-8">
+          <h1 className="text-4xl font-bold text-gray-100 text-center text-shadow-lg antialiased mb-2">
             Hora de vislumbrar o futuro
           </h1>
-          <p className="text-xl text-center text-purple-200 mb-6">
+          <p className="text-2xl text-center text-gray-100 text-shadow-lg font-medium antialiased mb-6">
             {selectedCards.length < 3
-              ? `Selecione  mais 0${3 - selectedCards.length} ${3 - selectedCards.length !== 1 ? "cartas" : "carta"}`
+              ? `Selecione ${3 - selectedCards.length} ${3 - selectedCards.length !== 1 ? "cartas" : "carta"}`
               : "As cartas foram reveladas"}
           </p>
-          <div className="text-center">
-            <button
-              onClick={handleReset}
-              className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full font-semibold transition-colors shadow-lg"
-            >
-              Reiniciar leitura
-            </button>
-          </div>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-8 mb-12">
+        <div className="flex flex-wrap justify-center gap-8 my-12">
           {availableCards.map((card) => (
             <TarotCard
               key={card.id}
@@ -71,31 +68,43 @@ export function Selection() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="max-w-4xl mx-auto"
+            className="max-w-4xl mx-auto my-auto w-full"
           >
             <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 mb-8">
-              <h2 className="text-2xl font-bold text-white mb-6">Significados das Cartas</h2>
+              <h2 className="mb-6 text-2xl font-bold text-gray-100 text-shadow-lg antialiased">
+                Significados das cartas
+              </h2>
               <div className="space-y-4">
                 {selectedCards.map((card, index) => (
-                  <div key={card.id} className="border-b border-purple-300/30 pb-4 last:border-0">
+                  <div
+                    key={card.id}
+                    className="border-b border-gray-300/30 pb-4 last:border-0"
+                  >
                     <div className="flex items-center gap-3 mb-2">
-                      <span className="text-3xl">{card.icon}</span>
-                      <h3 className="text-xl font-semibold text-purple-100">
+                      <h3 className="text-xl font-semibold text-gray-100 text-shadow-md antialiased">
                         {index + 1}. {card.name}
                       </h3>
                     </div>
-                    <p className="text-purple-200 ml-12">{card.meaning}</p>
+                    <p className="text-gray-200 text-shadow-xs antialiased whitespace-pre-line ml-12">
+                      {card.meaning}
+                    </p>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="text-center">
+            <div className="flex gap-6 justify-center">
+              <button
+                onClick={handleReset}
+                className="bg-amber-500 hover:bg-amber-600 text-gray-100 antialiased px-8 py-4 rounded-2xl text-lg font-bold text-shadow-md transition-colors shadow-xl"
+              >
+                Reiniciar leitura
+              </button>
               <button
                 onClick={handleSeeAllCards}
-                className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors shadow-lg"
+                className="bg-sky-500 hover:bg-sky-600 text-gray-100 antialiased px-8 py-4 rounded-2xl text-lg font-bold text-shadow-md transition-colors shadow-xl"
               >
-                Ver todas as Cartas
+                Ver todas as cartas
               </button>
             </div>
           </motion.div>
