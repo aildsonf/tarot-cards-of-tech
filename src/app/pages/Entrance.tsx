@@ -13,7 +13,7 @@ export function Entrance() {
     // Show title for 5 seconds then show start card
     const timer1 = setTimeout(() => {
       setStage("start");
-    }, 3000);
+    }, 2000);
 
     return () => {
       clearTimeout(timer1);
@@ -23,7 +23,7 @@ export function Entrance() {
   useEffect(() => {
     if (stage === "description") {
       const timer = setTimeout(() => {
-        navigate("/leitura");
+        navigate("/tiragem");
       }, 8000);
 
       return () => clearTimeout(timer);
@@ -57,17 +57,19 @@ export function Entrance() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              onClick={handleStart}
-              className="relative w-64 h-96 backface-hidden rounded-2xl shadow-xl overflow-hidden cursor-pointer hover:scale-105 transition-transform"
+              className="flex flex-col items-center justify-center gap-12"
             >
               <img
                 src="/assets/toolkit-logo.png"
                 alt="Tarot Cards of Tech logo"
-                className="object-fit w-full h-full"
+                className="object-fit w-64 h-96 backface-hidden rounded-2xl shadow-2xl"
               />
-              <p className="absolute bottom-0 left-0 right-0 pb-6 pt-50 bg-gradient-to-t from-sky-500 to-transparent text-center font-bold text-2xl text-gray-100 text-shadow-lg antialiased">
-                INICIAR
-              </p>
+              <button
+                onClick={handleStart}
+                className="bg-black/40 hover:bg-black/60 backdrop-blur-md text-gray-100 antialiased px-4 py-2 rounded-2xl text-lg text-shadow-md transition-colors shadow-xl cursor-pointer w-full"
+              >
+                Iniciar
+              </button>
             </motion.div>
           )}
 
@@ -77,7 +79,7 @@ export function Entrance() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-gray-100 text-shadow-lg antialiased text-center px-8 max-w-3xl"
+              className="text-gray-100 text-shadow-lg antialiased text-center italic px-8 max-w-3xl"
             >
               <p className="text-xl leading-relaxed mb-4">
                 A Artefact criou as Cartas de Tarô da Tecnologia para ajudar
