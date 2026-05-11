@@ -17,7 +17,7 @@ export function Selection() {
   }, []);
 
   const handleCardClick = (card: TarotCardType) => {
-    if (selectedCards.length < 3 && !selectedCards.includes(card)) {
+    if (selectedCards.length < 2 && !selectedCards.includes(card)) {
       setSelectedCards([...selectedCards, card]);
       return;
     }
@@ -51,8 +51,8 @@ export function Selection() {
             Descubra como antecipar impactos
           </h1>
           <p className="text-2xl text-center text-gray-100 text-shadow-lg font-medium antialiased mb-6">
-            {selectedCards.length < 3
-              ? `Selecione ${3 - selectedCards.length} ${3 - selectedCards.length !== 1 ? "cartas" : "carta"}`
+            {selectedCards.length < 2
+              ? `Selecione ${2 - selectedCards.length} ${2 - selectedCards.length !== 1 ? "cartas" : "carta"}`
               : "As cartas foram reveladas"}
           </p>
         </div>
@@ -69,7 +69,7 @@ export function Selection() {
           ))}
         </div>
 
-        {selectedCards.length === 3 && (
+        {selectedCards.length === 2 && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
